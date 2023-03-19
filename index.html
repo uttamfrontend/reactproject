@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+
+
+	
+	<style>
+		.main {
+			width: 98%;
+			height: 95vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 5px solid black;
+		}
+
+		.box {
+			width: 80%;
+			height: 60vh;
+			background-color: rgb(5, 5, 68);
+		}
+
+		h1 {
+			margin-top: 50px;
+			color: white;
+			text-align: center;
+			font-size: 3.5rem;
+		}
+
+		#end-date {
+			color: orange;
+			text-align: center;
+			font-size: 3.5rem;
+		}
+
+		.col {
+			margin-top: 20px;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			color: white;
+		}
+
+		div {
+			width: 250px;
+			text-align: center;
+		}
+
+		input {
+			width: 50%;
+			background-color: white;
+			border-color: transparent;
+			border-radius: 5px;
+			height: 50px;
+			text-align: center;
+			font-size: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main">
+		<div class="box">
+			<h1>We are coming soon</h1>
+			<h1 id="end-date">20 March 2022 10:00 PM</h1>
+			<div class="col">
+				<div>
+					<input type="text" readonly value="0">
+					<br />
+					<p>Days</p>
+				</div>
+				<div>
+					<input type="text" readonly value="0">
+					<br />
+					<p>Hours</p>
+				</div>
+				<div>
+					<input type="text" readonly value="0">
+					<br />
+					<p>Minutes</p>
+				</div>
+				<div>
+					<input type="text" readonly value="0">
+					<br />
+					<p>Seconds</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<script>
+
+		var endDate = "14 March  2023 08:20:00 PM"
+
+		document.getElementById("end-date").innerText = endDate;
+		const inputs = document.querySelectorAll("input")
+
+
+		function clock() {
+			var end = new Date(endDate)
+			var now = new Date()
+			var diff = (end - now) / 1000;
+
+			if (diff < 0) return;
+
+			inputs[0].value = Math.floor(diff / 3600 / 24);
+			inputs[1].value = Math.floor(diff / 3600) % 24;
+			inputs[2].value = Math.floor(diff / 60) % 60;
+			inputs[3].value = Math.floor(diff) % 60;
+			setInterval(clock, 1000)
+		}
+
+		clock()
+
+
+
+	</script>
+</body>
+
+</html>
